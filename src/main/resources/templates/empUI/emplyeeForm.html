@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Form</title>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<style>
+	p{
+		font-size: 24px;
+		font-style: bold;
+	}
+</style>
+
+</head>
+<body style="margin-top : 4%">
+
+<div class="container">
+
+<form class="form" action ="#" th:action="@{/employee/save}" th:object="${EMPLOYEE}" method="post" >
+
+<p th:if="*{empno} == null">Add Employee Details</p> 
+ <p th:if="*{empno} != null">Update Employee Details</p> 
+  <br>
+
+<div class="row">
+  <div class="col-sm-6">
+  <input type="hidden" name="id" th:field ="*{empno}" />
+  </div>
+</div>
+
+
+
+
+<div class="row">
+  <div class="col-sm-3">
+    <label class="col-form-label">name</label>
+  </div>
+  <div class="col-sm-6">
+  <input type="text" name="empName" th:field ="*{ename}" />
+  </div>
+</div>
+&nbsp;
+<div class="row">
+  <div class="col-sm-3">
+    <label class="col-form-label">job</label>
+  </div>
+  <div class="col-sm-6">
+  <input type="text" name="job" th:field ="*{job}" />
+  </div>
+</div>
+&nbsp;
+<div class="row">
+  <div class="col-sm-3">
+    <label class="col-form-label">hiredate</label>
+  </div>
+  <div class="col-sm-6">
+  <input type="date" name="date" th:field ="*{hiredate}" />
+  </div>
+</div>
+
+&nbsp;
+<div class="row">
+  <div class="col-sm-3">
+    <label class="col-form-label">managerid</label>
+  </div>
+  <div class="col-sm-6">
+  <input type="text" name="ManagerID" th:field ="*{managerId}" />
+  </div>
+</div>
+&nbsp;
+<div class="row">
+  <div class="col-sm-3">
+    <label class="col-form-label">salary </label>
+  </div>
+  <div class="col-sm-6">
+  <input type="text" name="salary" th:field ="*{salary}"/>
+  </div>
+</div>
+
+&nbsp;
+<div class="row">
+  <div class="col-sm-3">
+    <label class="col-form-label">commision</label>
+  </div>
+  <div class="col-sm-6">
+  <input type="text" name="Commission"  th:field ="*{commission}"/>
+  </div>
+</div>
+&nbsp;
+
+
+
+&nbsp;
+<div class="row">
+  <div class="col-sm-2">
+  <input type ="submit" value ="Submit" name="submit" class="btn btn-lg btn-dark" />
+  </div>
+  
+  <div class="col-sm-4">
+  <input type ="reset" value ="Reset" name="reset" class="btn btn-lg btn-dark" />
+  </div>
+  </div>
+
+</form>
+&nbsp;
+<div><a th:href="@{/employee/empList}">Back to Employee List</a>
+</div>
+</div>
+
+
+</body>
+</html>

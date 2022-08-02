@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xlmns:th = "https://www.thymeleaf.org/">
+
+<head>
+<title>Employee List </title>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<style>
+body {
+	margin-top : 8%;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div><a th:href="@{/employee/addEmp}"class ="btn btn-dark">Add Employee</a></div>
+
+
+
+&nbsp;
+<table class="table table-bordered">
+<tr class="table-dark">
+<th> ID </th>
+<th> Employee Name </th>
+<th> HireDate </th>
+<th> Salary </th>
+<th> Action </th>
+</tr>
+
+<tr th:each = "emp : ${EMPLOYEE}">
+	<td th:text="${emp.empno}" />
+	<td th:text = "${emp.ename}"/>
+	<td th:text = "${emp.hiredate}" />
+	<td th:text = "${emp.salary}" />
+	<td>
+		<a class ="btn btn-dark" th:href="@{/employee/updateForm(empId = ${emp.empno} )}">update</a>
+		&nbsp;
+		<a class ="btn btn-dark" th:href="@{/employee/delete(empId = ${emp.empno} )}" 	
+		onclick = "if(!(confirm('Are you sure to delete this employee details?'))) ">delete</a>
+	
+	</td>
+	
+</tr>
+
+</table>
+</div>
+
+
+</body>
+</html>
